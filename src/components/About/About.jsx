@@ -49,7 +49,13 @@ function About() {
       >
         About Me
       </Typography>
-      <Container sx={{ marginBottom: '20px', backgroundColor: '#00203FFF' }}>
+      <Container
+        sx={{
+          marginBottom: '20px',
+          backgroundColor: '#00203FFF',
+          borderRadius: '10px',
+        }}
+      >
         <Grid
           container
           spacing={3}

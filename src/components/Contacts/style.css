@@ -1,0 +1,20 @@
+.contacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 120px;
+  margin-top: 40px;
+  background-color: #00203fff;
+}
+@media only screen and (max-width: 600px) {
+  .contacts {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 20px;
+  }
+}

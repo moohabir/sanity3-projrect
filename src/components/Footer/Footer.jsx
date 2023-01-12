@@ -19,7 +19,8 @@ function Footer() {
           left: 0,
           bottom: 0,
           width: '100%',
-          backgroundColor: '#F2AA4CFF',
+          //backgroundColor: '#F2AA4CFF',
+          backgroundColor: '#282c34',
           color: 'white',
           textAlign: 'center',
         }}

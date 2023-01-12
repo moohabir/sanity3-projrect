@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SanityClient from '../../client';
 import './hero.css';
-import theme from './style';
+import theme from './style.js';
 import Resume from '../../images/contact.png';
 import {
   Box,
@@ -54,6 +54,7 @@ export default function Hero() {
           marginBottom: '40px',
           marginTop: '40px',
           backgroundColor: '#00203FFF',
+          borderRadius: '10px',
         }}
       >
         <Grid
@@ -76,20 +77,22 @@ export default function Hero() {
                     }}
                   >
                     <Typography
-                      variant="h5"
+                      variant="h6"
                       color="secondary"
                     >
                       {hero.title}
                     </Typography>
-                    <Typography>{hero.title2}</Typography>
-                    <Typography variant="subtitle1">
-                      {hero.description}
+                    <Typography
+                      variant="h4"
+                      color="secondary"
+                    >
+                      {hero.title2}
                     </Typography>
                     <Typography
-                      variant="subtitle2"
-                      gutterBottom
+                      variant="subtitle1"
+                      color="secondary"
                     >
-                      Tags: {hero.tags}
+                      {hero.description}
                     </Typography>
 
                     <div
@@ -129,6 +132,8 @@ export default function Hero() {
                       style={{
                         height: '400px',
                         width: '400px',
+                        borderRadius: '50%',
+                        padding: '10px',
                       }}
                     />
                   </Box>

@@ -53,24 +53,29 @@ function Header() {
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'center',
-            backgroundColor: '#F2AA4CFF',
+            height: '60px',
+            //backgroundColor: '#F2AA4CFF',
+            backgroundColor: '#282c34',
+
             gap: '30',
+            color: '#fff',
             //color: '#282c34',
           }}
         >
           <Typography
             variant="h3"
-            color="secondary"
+            color="primary"
             component={Link}
             to="/"
             sx={{
               textDecoration: 'none',
-              fontSize: 'large',
+              fontSize: '24px',
               fontWeight: 'bold',
-              color: '#282c34',
+              textTransform: 'uppercase',
+              //color: '#282c34',
             }}
           >
-            Moha Abdi
+            Mohamed Abdille
           </Typography>
 
           <Stack
@@ -91,15 +96,16 @@ function Header() {
                 paddingRight: '10px',
                 paddingLeft: '20px',
                 gap: '30px',
+
                 //color: 'secondary',
               }}
             >
               <Typography
                 component={Link}
+                color="primary"
                 to="/"
                 sx={{
                   textDecoration: 'none',
-                  color: 'black',
                   display: { sm: 'block', xs: 'none' },
                 }}
               >
@@ -152,6 +158,7 @@ function Header() {
               <IconButton
                 onClick={handleClick}
                 size="small"
+                color="primary"
                 sx={{ ml: 2, display: { xs: 'block', sm: 'none' } }}
                 aria-controls={open ? 'account-menu' : undefined}
                 aria-haspopup="true"
@@ -173,7 +180,8 @@ function Header() {
               sx: {
                 overflow: 'visible',
                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                backgroundColor: orange[500],
+                backgroundColor: '#00203FFF',
+                color: '#fff',
                 position: 'absolute',
                 top: 0,
                 width: '100%',

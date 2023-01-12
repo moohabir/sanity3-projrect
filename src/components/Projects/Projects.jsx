@@ -50,7 +50,13 @@ function Projects() {
       >
         My Projects
       </Typography>
-      <Container sx={{ marginBottom: '50px', backgroundColor: '#00203FFF' }}>
+      <Container
+        sx={{
+          marginBottom: '50px',
+          backgroundColor: '#00203FFF',
+          borderRadius: '10px',
+        }}
+      >
         <Grid
           container
           spacing={3}
