@@ -10,12 +10,15 @@ import {
   //CardMedia,
   Grid,
   Typography,
+  Container,
+  Box,
+  IconButton,
+  ThemeProvider,
   //Box,
 } from '@mui/material';
-//import { Facebook, GitHub } from '@mui/icons-material';
+import theme from './style';
 
 //import ImageUrlBuilder from '@sanity/image-url';
-import { Container } from '@mui/system';
 
 //const Builder = ImageUrlBuilder(SanityClient);
 //function urlFor(source) {
@@ -30,9 +33,11 @@ function SinglePost() {
     SanityClient.fetch(
       `*[slug.current == '${slug}']{
       title,
+      date,
       body,
       "authorName":author->name,
       "authorImage":author->image,
+        
       mainImage{
         asset->{
           _id,
@@ -54,118 +59,198 @@ function SinglePost() {
   if (!singlePost) return 'Loading.....';
   console.log(singlePost);
   return (
-    <Container
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-    >
-      <Grid
-        container
-        spacing={3}
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          display: 'flex',
+          //backgroundColor: 'gray',
+          flexDirection: { xs: 'column', sm: 'row' },
+        }}
       >
-        <Grid
-          item
-          xs={12}
-          sm={12}
+        <Container
+          sx={{
+            flex: 1,
+            //position: 'sticky',
+            //top: '20px',
+            //height: 'calc(100vh - 70px)',
+            overflow: 'scroll',
+            display: { xs: 'none', sm: 'block' },
+          }}
         >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '20',
-            }}
+          <Box>
+            <Button>Like</Button>
+            <Button>Comments</Button>
+            <Button>Save</Button>
+            <IconButton>
+              <button>MoreIcon</button>
+            </IconButton>
+          </Box>
+        </Container>
+        <Container
+          sx={{
+            flex: 6,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            // backgroundColor: 'white',
+            border: '1px solid gray',
+            borderRadius: '10px',
+            marginTop: '20px',
+            width: '100%',
+            marginLeft: '10px',
+          }}
+        >
+          <Grid
+            container
+            spacing={3}
           >
-            <Typography
-              variant="h2"
-              sx={{ alignSelf: 'center' }}
+            <Grid
+              item
+              xs={12}
+              sm={12}
             >
-              {singlePost.title}
-            </Typography>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '20',
-            }}
-          >
-            {/*<img
-              src={singlePost?.authorImage?.asset.ref}
-              alt="ggg"
-              style={{
-                height: '40vh',
-                width: '50%',
-                //alignItems: 'center',
-              }}
-            />*/}
-            <img
-              src={singlePost?.mainImage?.asset.url}
-              alt="ggg"
-              style={{
-                height: '40vh',
-                width: '70%',
-                border: '1px solid gray',
-                borderRadius: '10px',
-                //alignItems: 'center',
-              }}
-            />
-            <span>{singlePost.authorName}</span>
-          </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  //alignItems: 'center',
+                  gap: '20',
+                  marginTop: '20px',
+                  marginRight: '0',
+                  marginLeft: '0',
+                  paddingLeft: '0',
+                  width: '100%',
+                }}
+              >
+                <img
+                  src={singlePost?.mainImage?.asset.url}
+                  alt="ggg"
+                  style={{
+                    height: '40vh',
+                    width: '100%',
+                    border: '1px solid gray',
+                    borderRadius: '10px',
+                    //alignItems: 'center',
+                  }}
+                />
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              maxWidth: 'full',
-              padding: '10px',
-              margin: '10px',
-              width: '100%',
-              lineHeight: 1.6,
-              fontFamily: 'Roboto',
-            }}
-          >
-            <BlogContent
-              blocks={singlePost?.body}
-              projectId="process.env.REACT_APP_projectId"
-              dataset="production"
-              style={{
-                display: 'flex',
-                padding: '10px',
-              }}
-            />
+                <div
+                  sty={{
+                    marginLeft: '10px',
+                    padding: '10px',
+                    marginTop: '20px',
+                  }}
+                >
+                  <img
+                    src={singlePost?.authorImage?.asset?._ref}
+                    //src={singlePost?.mainImage?.asset.url}
+                    alt="h"
+                    style={{
+                      height: '40px',
+                      width: '40px',
+                      border: '1px solid gray',
+                      borderRadius: '50%',
+                      //alignItems: 'center',
+                    }}
+                  />
+                  <span>
+                    <span>{singlePost.authorName}</span>
+                    Published on :
+                    <span style={{ paddingRight: '4px' }}>
+                      {new Date(singlePost.date).toLocaleString('en-EN', {
+                        month: 'long',
+                      })}
+                    </span>
+                    <span style={{ paddingRight: '4px' }}>
+                      {new Date(singlePost.date).getDate()}
+                    </span>
+                    <span>{new Date(singlePost.date).getFullYear()}</span>
+                  </span>
+                </div>
+              </div>
+
+              <Typography
+                variant="h2"
+                sx={{}}
+              >
+                {singlePost.title}
+              </Typography>
+
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  maxWidth: 'full',
+                  padding: '10px',
+                  margin: '10px',
+                  width: '100%',
+                  lineHeight: 1.6,
+                  fontFamily: 'Roboto',
+                }}
+              >
+                <BlogContent
+                  blocks={singlePost?.body}
+                  projectId="process.env.REACT_APP_projectId"
+                  dataset="production"
+                  style={{
+                    display: 'flex',
+                    padding: '10px',
+                  }}
+                />
+              </div>
+              <div>
+                <Button
+                  component={Link}
+                  to="/blog"
+                >
+                  Share
+                </Button>
+                <Button
+                  component={Link}
+                  to="/blog"
+                >
+                  Comment
+                </Button>
+                <Button
+                  component={Link}
+                  to="/blog"
+                >
+                  Like
+                </Button>
+              </div>
+              <Button
+                component={Link}
+                to="/blog"
+              >
+                Back
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+
+        <Container sx={{ flex: 1 }}>
+          <div style={{ dispaly: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex' }}>
+              <img
+                src=""
+                alt="userimage"
+              />
+              <span>Mohamed Abdille</span>
+            </div>
+            <Button>Follow</Button>
+            <Typography>
+              Frontend Developer interested in React, Sanity, and Solidity
+            </Typography>
+            <span>
+              LOCATION Ludinghausen, Germany, WORK as FrontEND Developer Amazon
+            </span>
+            <span>JOINED 27 May 2020</span>
           </div>
-          <div>
-            <Button
-              component={Link}
-              to="/blog"
-            >
-              Share
-            </Button>
-            <Button
-              component={Link}
-              to="/blog"
-            >
-              Comment
-            </Button>
-            <Button
-              component={Link}
-              to="/blog"
-            >
-              Like
-            </Button>
-          </div>
-          <Button
-            component={Link}
-            to="/blog"
-          >
-            Back
-          </Button>
-        </Grid>
-      </Grid>
-    </Container>
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 }
 

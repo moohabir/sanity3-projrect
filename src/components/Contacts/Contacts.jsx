@@ -1,25 +1,22 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-//import photo from '../assets/contact.png';
-import { Box, Stack, Typography } from '@mui/material';
 
 export default function Contacts() {
-  const [send, setSend] = useState(false);
   const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        'service_0s5fqij',
-        'template_b2ozi7e',
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
         form.current,
-        '5EqUQWma98WcSjhz_'
+        'YOUR_PUBLIC_KEY'
       )
       .then(
         (result) => {
           console.log(result.text);
-          setSend(true);
         },
         (error) => {
           console.log(error.text);
@@ -28,60 +25,33 @@ export default function Contacts() {
   };
 
   return (
-    <>
-      <Typography variant="h4">Contact Me</Typography>
-      <Stack
-        direction="row"
-        spacing={3}
-        sx={{ display: 'flex', alignItems: 'center' }}
-      >
-        <Box sx={{ flex: '50%' }}>
-          <form
-            className="form"
-            onSubmit={sendEmail}
-            ref={form}
-          >
-            <input
-              type="text"
-              placeholder="Your Name"
-              name="name"
-              className="input"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              name="email"
-              className="email"
-              required
-            />
-            <textarea
-              placeholder="Write Massage"
-              name="message"
-              className="comments"
-              required
-            />
-            <button
-              type="submit"
-              className="form-btn"
-            >
-              Send message
-            </button>
-            {send ? (
-              <p>Your Message was sent successfully</p>
-            ) : (
-              <p>Please fill all of the form correctly</p>
-            )}
-          </form>
-        </Box>
-        {/* <Box sx={{ flex: '50%' }}>
-          <img
-            src={photo}
-            alt=""
-            sx={{ height: '60px', width: '60px' }}
-          />
-            </Box>*/}
-      </Stack>
-    </>
+    <form
+      ref={form}
+      onSubmit={sendEmail}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#00203FFF',
+      }}
+    >
+      <label>Name</label>
+      <input
+        type="text"
+        name="user_name"
+      />
+      <label>Email</label>
+      <input
+        type="email"
+        name="user_email"
+      />
+      <label>Message</label>
+      <textarea name="message" />
+      <input
+        type="submit"
+        value="Send"
+      />
+    </form>
   );
 }

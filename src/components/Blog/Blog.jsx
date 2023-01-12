@@ -12,6 +12,8 @@ import {
   Button,
 } from '@mui/material';
 import SanityClient from '../../client';
+import { ThemeProvider } from 'styled-components';
+import theme from './style';
 
 export default function Blog() {
   const [posts, setPosts] = useState(null);
@@ -39,8 +41,9 @@ export default function Blog() {
   if (!posts) return <CircularProgress />;
 
   console.log(posts);
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Typography
         variant="h3"
         gutterBottom
@@ -80,7 +83,16 @@ export default function Blog() {
                 <Typography variant="h5">{post?.title}</Typography>
                 <Typography variant="h6">{post?.description}</Typography>
                 <Typography variant="body2">
-                  Published at : {new Date(post?.date).toLocaleDateString()}
+                  Published at :
+                  <span style={{ paddingRight: '4px' }}>
+                    {new Date(post.date).toLocaleString('en-EN', {
+                      month: 'long',
+                    })}
+                  </span>
+                  <span style={{ paddingRight: '4px' }}>
+                    {new Date(post.date).getDate()}
+                  </span>
+                  <span>{new Date(post.date).getFullYear()}</span>
                 </Typography>
 
                 <Button
@@ -97,6 +109,6 @@ export default function Blog() {
             //</Link>
           ))}
       </Grid>
-    </>
+    </ThemeProvider>
   );
 }

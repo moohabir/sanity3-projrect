@@ -1,231 +1,251 @@
 import React, { useContext, useState } from 'react';
-
-import { FiMenu } from 'react-icons/fi';
-import { FaTimes } from 'react-icons/fa';
 import {
   AppBar,
   Box,
   Button,
+  Card,
+  Menu,
   IconButton,
+  MenuItem,
   Stack,
   Toolbar,
   Typography,
+  Avatar,
+  ThemeProvider,
+  Tooltip,
+  CssBaseline,
 } from '@mui/material';
+
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 //import { DarkModeContext } from '../context/DarkModeContext';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Link } from 'react-router-dom';
-//import '../style.css';
+
+import theme from './style';
+import { orange } from '@mui/material/colors';
 
 function Header() {
   const [show, setShow] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(false);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   //const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
-    <AppBar
-      position="sticky"
-      spacing={3}
-    >
-      <Toolbar
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          //backgroundColor= {darkMode ? 'dark' : 'light'},
-          backgroundColor: 'white',
-          color: '#282c34',
-        }}
+    <ThemeProvider theme={theme}>
+      <AppBar
+        position="sticky"
+        spacing={3}
       >
-        <Typography
-          variant="h3"
-          component={Link}
-          to="/"
-          sx={{
-            textDecoration: 'none',
-            fontSize: 'large',
-            fontWeight: 'bold',
-            color: '#282c34',
-          }}
-        >
-          Moha Abdi
-        </Typography>
-
-        <Stack
+        <Toolbar
           sx={{
             display: 'flex',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            padding: '10px',
+            justifyContent: 'space-around',
             alignItems: 'center',
-            position: 'relative',
+            backgroundColor: '#F2AA4CFF',
+            gap: '30',
+            //color: '#282c34',
           }}
         >
-          <Box
+          <Typography
+            variant="h3"
+            color="secondary"
+            component={Link}
+            to="/"
             sx={{
-              display: { xs: 'none', sm: 'flex' },
-              justifyContent: 'space-between',
-              paddingRight: '10px',
-              paddingLeft: '20px',
-              gap: '30px',
+              textDecoration: 'none',
+              fontSize: 'large',
+              fontWeight: 'bold',
+              color: '#282c34',
             }}
           >
-            <Typography
-              component={Link}
-              to="/"
-              sx={{ textDecoration: 'none' }}
-            >
-              Home
-            </Typography>
-            <Typography
-              component={Link}
-              to="/about"
-              sx={{ textDecoration: 'none' }}
-            >
-              About
-            </Typography>
-            <Typography
-              component={Link}
-              to="skills"
-              sx={{ textDecoration: 'none' }}
-            >
-              Skills
-            </Typography>
-            <Typography
-              component={Link}
-              to="projects"
-              sx={{ textDecoration: 'none' }}
-            >
-              Projects
-            </Typography>
-            <Typography
-              component={Link}
-              to="blog"
-              sx={{ textDecoration: 'none' }}
-            >
-              Blog
-            </Typography>
-            <Typography
-              component={Link}
-              to="contact"
-              sx={{ textDecoration: 'none' }}
-            >
-              Contact
-            </Typography>
-          </Box>
+            Moha Abdi
+          </Typography>
 
-          {/* for mobile*/}
-          {show ? (
+          <Stack
+            sx={{
+              display: { sm: 'flex', xs: 'none' },
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              padding: '10px',
+              alignItems: 'center',
+              position: 'relative',
+              color: 'inherit',
+            }}
+          >
             <Box
               sx={{
-                display: { xs: 'flex', sm: 'none' },
-                justifyContent: 'space-around',
-                flexDirection: 'column',
-                //paddingRight: '10px',
-                //paddingLeft: '20px',
-                padding: '30px',
-                position: 'absolute',
-                left: '50%',
-                right: '50%',
-                top: '420px',
-                bottom: 0,
-                margin: 'auto',
-                backgroundColor: 'transparent',
-                color: 'black',
-                marginRight: '50px',
-                minHeight: '90vh',
-                height: '300px',
-                width: '100%',
-                alignItems: 'center',
-                transform: 'translate(100)',
-                textDecoration: 'none',
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingRight: '10px',
+                paddingLeft: '20px',
+                gap: '30px',
+                //color: 'secondary',
               }}
             >
               <Typography
-                href="/"
                 component={Link}
                 to="/"
-                style={{ textDecoration: 'none' }}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  display: { sm: 'block', xs: 'none' },
+                }}
               >
                 Home
               </Typography>
               <Typography
-                href="/about"
                 component={Link}
                 to="/about"
-                style={{ textDecoration: 'none' }}
+                sx={{ textDecoration: 'none' }}
               >
                 About
               </Typography>
               <Typography
-                href="skills"
                 component={Link}
-                to="/skills"
-                style={{ textDecoration: 'none' }}
+                to="skills"
+                sx={{ textDecoration: 'none' }}
               >
                 Skills
               </Typography>
               <Typography
-                href="projects"
                 component={Link}
-                to="/projects"
-                style={{ textDecoration: 'none' }}
+                to="projects"
+                sx={{ textDecoration: 'none' }}
               >
                 Projects
               </Typography>
               <Typography
-                href="blog"
                 component={Link}
-                to="/blog"
-                style={{ textDecoration: 'none' }}
+                to="blog"
+                sx={{ textDecoration: 'none' }}
               >
                 Blog
               </Typography>
               <Typography
-                href="contact"
                 component={Link}
-                to="/contact"
-                style={{ textDecoration: 'none' }}
+                to="contact"
+                sx={{ textDecoration: 'none' }}
               >
                 Contact
               </Typography>
             </Box>
-          ) : (
-            ''
-          )}
 
-          {/*<IconButton
-            onClick={toggleDarkMode}
-            variant="contained"
-            color="primary"
-            sx={{
-              height: '30px',
-              width: '30px',
-              padding: '10px',
-              color: '#282c34',
-            }}
-          >
-            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
-        </IconButton>*/}
+            {/* for mobile*/}
+          </Stack>
+
           <Box
-            sx={{
-              display: { xs: 'block', sm: 'none' },
-              height: '30px',
-              paddingLeft: '10px',
-              alignItems: 'center',
-            }}
+            sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
-            <Button
-              onClick={() => setShow(!show)}
-              className="menu-btn"
-              variant="contained"
-              color="primary"
-              sx={{ alignItems: 'center' }}
-            >
-              {show ? <FaTimes /> : <FiMenu />}
-            </Button>
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2, display: { xs: 'block', sm: 'none' } }}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+              >
+                {open ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            </Tooltip>
           </Box>
-        </Stack>
-      </Toolbar>
-    </AppBar>
+
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                backgroundColor: orange[500],
+                position: 'absolute',
+                top: 0,
+                width: '100%',
+                height: '100vh',
+                padding: '150px',
+
+                mt: 1.5,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                '&:before': {
+                  content: '""',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  right: 10,
+                  width: 10,
+                  height: 10,
+
+                  transform: 'translateY(-50%) rotate(45deg)',
+
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem
+              component={Link}
+              to="/"
+            >
+              Home
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              to="/about"
+            >
+              About
+            </MenuItem>
+
+            <MenuItem
+              component={Link}
+              to="/skills"
+            >
+              Skills
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              to="/projects"
+            >
+              Projects
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              to="/blog"
+            >
+              Blog
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              to="/contact"
+            >
+              Contacts
+            </MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+    </ThemeProvider>
   );
 }
 
