@@ -4,8 +4,9 @@ import { orange, blue } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     primary: {
-      node: 'dark',
-      main: orange[500],
+      mode: 'dark',
+      //main: orange[500],
+      main: '#121212',
     },
     secondary: {
       main: blue[500],

@@ -54,6 +54,7 @@ export default function Hero() {
           marginBottom: '40px',
           marginTop: '40px',
           backgroundColor: '#00203FFF',
+          //backgroundColor: '#282c34',
           borderRadius: '10px',
         }}
       >
@@ -133,7 +134,7 @@ export default function Hero() {
                         height: '400px',
                         width: '400px',
                         borderRadius: '50%',
-                        padding: '10px',
+                        padding: '20px',
                       }}
                     />
                   </Box>

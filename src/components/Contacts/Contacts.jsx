@@ -1,9 +1,18 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Button, Container, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from '@mui/material';
 import image from '../../images/contact.png';
 import { useState } from 'react';
 import './style.css';
+import theme from './style';
 
 export default function Contacts() {
   const [send, setSend] = useState(false);
@@ -31,55 +40,97 @@ export default function Contacts() {
   };
 
   return (
-    <>
-      <Typography variant="h3">Contact me</Typography>
-      <Container
-        className="contacts"
-        sx={{}}
+    <ThemeProvider theme={theme}>
+      <Typography
+        variant="h3"
+        color="secondary"
       >
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          style={{
+        Contact me
+      </Typography>
+      <Typography>Please fill free to get in touch with me</Typography>
+      <Container className="contacts">
+        <Grid
+          container
+          spacing={3}
+        >
+          <Box
+            component="form"
+            ref={form}
+            onSubmit={sendEmail}
+            sx={{
+              '& .MuiTextField-root': {
+                m: 1,
+                marginTop: '20px',
+                width: '25ch',
+                backgroundColor: '#fff',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '4px',
+              },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <Grid
+              item
+              xs={12}
+              sm={6}
+            >
+              <div style={{}}>
+                <TextField
+                  id="outlined-multiline-flexible"
+                  name="name"
+                  label="Write your name"
+                  maxRows={4}
+                  sx={{}}
+                />
+                <TextField
+                  id="outlined-multiline-flexible"
+                  type="email"
+                  name="email"
+                  label="Wrie email"
+                />
+                <TextField
+                  id="outlined-multiline-static"
+                  name="message"
+                  label="Write message"
+                  multiline
+                  rows={4}
+                />
+              </div>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+              >
+                Submit
+              </Button>
+            </Grid>
+          </Box>
+        </Grid>
+        <Box
+          sx={{
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
+            justifyContent: 'center',
             alignItems: 'center',
-            height: '350px',
-            width: '350px',
-            border: '3px solid gray',
-            //margin: 'auto',
-            //backgroundColor: '#00203FFF',
+            marginTop: '20px',
           }}
         >
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
+          <img
+            src={image}
+            alt=""
+            style={{ width: '350px', height: '350px' }}
           />
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-          />
-          <label>Message</label>
-          <textarea name="message" />
-          <Button type="submit">Submit</Button>
-        </form>
-        <img
-          src={image}
-          alt=""
-          style={{ width: '350px', height: '350px' }}
-        />
+        </Box>
         {send && (
           <Typography
             variant="h6"
-            color="success"
+            color="#fff"
           >
             You successfully send your message
           </Typography>
         )}
       </Container>
-    </>
+    </ThemeProvider>
   );
 }

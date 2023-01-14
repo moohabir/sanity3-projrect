@@ -56,10 +56,6 @@ function Header() {
             height: '60px',
             //backgroundColor: '#F2AA4CFF',
             backgroundColor: '#282c34',
-
-            gap: '30',
-            color: '#fff',
-            //color: '#282c34',
           }}
         >
           <Typography
@@ -81,72 +77,56 @@ function Header() {
           <Stack
             sx={{
               display: { sm: 'flex', xs: 'none' },
-              justifyContent: 'space-between',
               flexDirection: 'row',
-              padding: '10px',
-              alignItems: 'center',
-              position: 'relative',
-              color: 'inherit',
+              gap: '30px',
             }}
           >
-            <Box
+            <Typography
+              component={Link}
+              color="primary"
+              to="/"
               sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                paddingRight: '10px',
-                paddingLeft: '20px',
-                gap: '30px',
-
-                //color: 'secondary',
+                textDecoration: 'none',
+                display: { sm: 'block', xs: 'none' },
               }}
             >
-              <Typography
-                component={Link}
-                color="primary"
-                to="/"
-                sx={{
-                  textDecoration: 'none',
-                  display: { sm: 'block', xs: 'none' },
-                }}
-              >
-                Home
-              </Typography>
-              <Typography
-                component={Link}
-                to="/about"
-                sx={{ textDecoration: 'none' }}
-              >
-                About
-              </Typography>
-              <Typography
-                component={Link}
-                to="skills"
-                sx={{ textDecoration: 'none' }}
-              >
-                Skills
-              </Typography>
-              <Typography
-                component={Link}
-                to="projects"
-                sx={{ textDecoration: 'none' }}
-              >
-                Projects
-              </Typography>
-              <Typography
-                component={Link}
-                to="blog"
-                sx={{ textDecoration: 'none' }}
-              >
-                Blog
-              </Typography>
-              <Typography
-                component={Link}
-                to="contact"
-                sx={{ textDecoration: 'none' }}
-              >
-                Contact
-              </Typography>
-            </Box>
+              Home
+            </Typography>
+            <Typography
+              component={Link}
+              to="/about"
+              sx={{ textDecoration: 'none' }}
+            >
+              About
+            </Typography>
+            <Typography
+              component={Link}
+              to="skills"
+              sx={{ textDecoration: 'none' }}
+            >
+              Skills
+            </Typography>
+            <Typography
+              component={Link}
+              to="projects"
+              sx={{ textDecoration: 'none' }}
+            >
+              Projects
+            </Typography>
+            <Typography
+              component={Link}
+              to="blog"
+              sx={{ textDecoration: 'none' }}
+            >
+              Blog
+            </Typography>
+            <Typography
+              component={Link}
+              to="contact"
+              sx={{ textDecoration: 'none' }}
+            >
+              Contact
+            </Typography>
 
             {/* for mobile*/}
           </Stack>

@@ -45,14 +45,14 @@ function Projects() {
       <Typography
         variant="h3"
         gutterBottom
-        color="primary"
+        color="secondary"
         sx={{ marginBottom: '30px' }}
       >
         My Projects
       </Typography>
       <Container
         sx={{
-          marginBottom: '50px',
+          marginBottom: '20px',
           backgroundColor: '#00203FFF',
           borderRadius: '10px',
         }}
@@ -71,7 +71,7 @@ function Projects() {
               >
                 <Card sx={{ bgcolor: 'gray', margin: '10px', padding: '40px' }}>
                   <CardMedia
-                    image={project.image.asset.url}
+                    image={project?.image?.asset?.url}
                     alt={project.title}
                     sx={{
                       height: '170px',
