@@ -10,6 +10,8 @@ import {
   Grid,
   ThemeProvider,
   Typography,
+  Stack,
+  Chip,
 } from '@mui/material';
 import theme from './style';
 
@@ -40,6 +42,7 @@ function Projects() {
       .catch(console.error);
   }, []);
   if (!projectData) return 'Loading.....';
+  console.log(projectData);
   return (
     <ThemeProvider theme={theme}>
       <Typography
@@ -53,7 +56,7 @@ function Projects() {
       <Container
         sx={{
           marginBottom: '20px',
-          backgroundColor: '#00203FFF',
+          //backgroundColor: '#00203FFF',
           borderRadius: '10px',
         }}
       >
@@ -69,7 +72,7 @@ function Projects() {
                 sm={6}
                 key={project._id}
               >
-                <Card sx={{ bgcolor: 'gray', margin: '10px', padding: '40px' }}>
+                <Card sx={{ margin: '10px', padding: '40px' }}>
                   <CardMedia
                     image={project?.image?.asset?.url}
                     alt={project.title}
@@ -81,7 +84,7 @@ function Projects() {
                     }}
                   />
                   <CardContent>
-                    <h1>{project.title}</h1>
+                    <Typography>{project.title}</Typography>
                     <Typography
                       variant="h6"
                       gutterBottom
@@ -92,9 +95,20 @@ function Projects() {
                     <Typography
                       variant="subtitle2"
                       gutterBottom
+                    ></Typography>
+                    <Stack
+                      direction="row"
+                      spacing={1}
                     >
-                      Tags: {project.tags}
-                    </Typography>
+                      <Typography>Stacks used: </Typography>
+                      {project.tags.map((tag) => (
+                        <Chip
+                          label={tag}
+                          //sx={{ padding: '5px' }}
+                        />
+                      ))}
+                    </Stack>
+
                     <Typography variant="subtitle1">
                       {project.description}
                     </Typography>

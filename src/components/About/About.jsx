@@ -45,7 +45,7 @@ function About() {
       <Typography
         variant="h2"
         gutterBottom
-        color="primary"
+        color="#fff"
       >
         About Me
       </Typography>

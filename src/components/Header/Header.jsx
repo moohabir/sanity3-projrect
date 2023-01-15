@@ -14,31 +14,28 @@ import {
   ThemeProvider,
   Tooltip,
   CssBaseline,
+  Switch,
+  Tabs,
+  Tab,
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-//import { DarkModeContext } from '../context/DarkModeContext';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
+
 import { Link } from 'react-router-dom';
 
 import theme from './style';
-import { orange } from '@mui/material/colors';
 
 function Header() {
-  const [show, setShow] = useState(false);
+  //const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleShow = () => {
-    setShow(!show);
   };
 
   //const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
@@ -162,32 +159,12 @@ function Header() {
                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                 backgroundColor: '#00203FFF',
                 color: '#fff',
-                position: 'absolute',
-                top: 0,
                 width: '100%',
                 height: '100vh',
-                padding: '150px',
+                paddingLeft: '50%',
 
-                mt: 1.5,
-                '& .MuiAvatar-root': {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                '&:before': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  right: 10,
-                  width: 10,
-                  height: 10,
-
-                  transform: 'translateY(-50%) rotate(45deg)',
-
-                  zIndex: 0,
-                },
+                mt: 5.5,
+                display: { xs: 'block', sm: 'none' },
               },
             }}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -196,6 +173,7 @@ function Header() {
             <MenuItem
               component={Link}
               to="/"
+              //sx={{ paddingBottom: '50px' }}
             >
               Home
             </MenuItem>

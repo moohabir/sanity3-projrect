@@ -48,6 +48,7 @@ export default function Blog() {
       <Container sx={{ backgroundColor: '#00203FFF', borderRadius: '10px' }}>
         <Typography
           variant="h3"
+          color="#fff"
           gutterBottom
         >
           Blog Posts

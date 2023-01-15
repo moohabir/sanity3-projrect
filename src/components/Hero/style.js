@@ -7,6 +7,7 @@ const theme = createTheme({
       mode: 'dark',
       //main: orange[500],
       main: '#fff',
+      
     },
     secondary: {
       main: blue[500],

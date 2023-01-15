@@ -53,8 +53,9 @@ export default function Hero() {
         sx={{
           marginBottom: '40px',
           marginTop: '40px',
-          backgroundColor: '#00203FFF',
+          //backgroundColor: '#00203FFF',
           //backgroundColor: '#282c34',
+          color: '#ffff',
           borderRadius: '10px',
         }}
       >
@@ -78,20 +79,20 @@ export default function Hero() {
                     }}
                   >
                     <Typography
-                      variant="h6"
-                      color="secondary"
+                      variant="h4"
+                      color="primary"
                     >
                       {hero.title}
                     </Typography>
                     <Typography
                       variant="h4"
-                      color="secondary"
+                      color="primary"
                     >
                       {hero.title2}
                     </Typography>
                     <Typography
-                      variant="subtitle1"
-                      color="secondary"
+                      variant="subtitle2"
+                      color="primary"
                     >
                       {hero.description}
                     </Typography>

@@ -38,7 +38,12 @@ function Skills() {
   if (!skillData) return 'Loading.....';
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ marginBottom: '40px' }}>
+      <Container
+        style={{
+          marginBottom: '40px',
+          //backgroundColor: '#fff'
+        }}
+      >
         <Typography
           variant="h3"
           color="white"
@@ -46,15 +51,13 @@ function Skills() {
         >
           My skills
         </Typography>
-        <span>These are some of my skills </span>
-      </div>
-      <Container
-        sx={{
-          marginBottom: '20px',
-          backgroundColor: '#00203FFF',
-          borderRadius: '10px',
-        }}
-      >
+        <Typography
+          variant="subtitle2"
+          gutterBottom
+          color="primary"
+        >
+          These are some of my skills
+        </Typography>
         <Grid
           container
           spacing={3}
@@ -74,9 +77,9 @@ function Skills() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'column',
-                    //margin: 'auto',
+                    margin: 'auto',
                     padding: '10px',
-                    bgcolor: 'transparent',
+
                     '&:hover': {
                       //animation from animista.net
                       //.slide-fwd-center {
@@ -90,16 +93,14 @@ function Skills() {
                     image={skill?.image?.asset?.url}
                     alt={skill.title}
                     sx={{
-                      height: '100px',
-                      width: '100px',
-                      alignSelf: 'center',
-                      marginLeft: '100px',
+                      height: '40px',
+                      width: '40px',
                     }}
                   />
-                  <CardContent>
+                  <CardContent sx={{}}>
                     <Typography
                       variant="h6"
-                      color="secondary"
+                      color="#333"
                       sx={{ alignSelf: 'center' }}
                     >
                       {skill?.title}
