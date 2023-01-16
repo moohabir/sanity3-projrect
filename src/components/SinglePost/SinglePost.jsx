@@ -17,7 +17,6 @@ import {
   //Box,
 } from '@mui/material';
 import theme from './style';
-import AdSense from '../AdSense/AdSense';
 
 //import ImageUrlBuilder from '@sanity/image-url';
 
@@ -249,7 +248,6 @@ function SinglePost() {
               LOCATION Ludinghausen, Germany, WORK as FrontEND Developer Amazon
             </span>
             <span>JOINED 27 May 2020</span>
-            <AdSense />
           </div>
         </Container>
       </Box>
