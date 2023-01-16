@@ -17,6 +17,7 @@ import {
   //Box,
 } from '@mui/material';
 import theme from './style';
+import AdSense from '../AdSense/AdSense';
 
 //import ImageUrlBuilder from '@sanity/image-url';
 
@@ -63,7 +64,7 @@ function SinglePost() {
       <Box
         sx={{
           display: 'flex',
-          //backgroundColor: 'gray',
+          backgroundColor: 'gray',
           flexDirection: { xs: 'column', sm: 'row' },
         }}
       >
@@ -88,15 +89,15 @@ function SinglePost() {
         </Container>
         <Container
           sx={{
-            flex: 6,
+            flex: 4,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundColor: 'white',
+            backgroundColor: 'white',
             border: '1px solid gray',
             borderRadius: '10px',
             marginTop: '20px',
-            width: '100%',
+            width: '80%',
             marginLeft: '10px',
           }}
         >
@@ -185,7 +186,8 @@ function SinglePost() {
                   maxWidth: 'full',
                   padding: '10px',
                   margin: '10px',
-                  width: '100%',
+                  width: '90%',
+                  flexWrap: 'wrap',
                   lineHeight: 1.6,
                   fontFamily: 'Roboto',
                 }}
@@ -230,7 +232,7 @@ function SinglePost() {
           </Grid>
         </Container>
 
-        <Container sx={{ flex: 1 }}>
+        <Container sx={{ flex: 2 }}>
           <div style={{ dispaly: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex' }}>
               <img
@@ -247,6 +249,7 @@ function SinglePost() {
               LOCATION Ludinghausen, Germany, WORK as FrontEND Developer Amazon
             </span>
             <span>JOINED 27 May 2020</span>
+            <AdSense />
           </div>
         </Container>
       </Box>
