@@ -64,7 +64,7 @@ function SinglePost() {
       <Box
         sx={{
           display: 'flex',
-          backgroundColor: 'gray',
+          backgroundColor: '#fff',
           flexDirection: { xs: 'column', sm: 'row' },
         }}
       >
@@ -183,23 +183,23 @@ function SinglePost() {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  maxWidth: 'full',
+                  textAlign: 'center',
+                  margin: 'auto',
+                  //maxWidth: 'full',
                   padding: '10px',
-                  margin: '10px',
-                  width: '90%',
+
+                  maxWidth: '100%',
                   flexWrap: 'wrap',
                   lineHeight: 1.6,
                   fontFamily: 'Roboto',
+                  backgroundColor: 'red',
                 }}
               >
                 <BlogContent
                   blocks={singlePost?.body}
                   projectId="process.env.REACT_APP_projectId"
                   dataset="production"
-                  style={{
-                    display: 'flex',
-                    padding: '10px',
-                  }}
+                  style={{ backgroundColor: 'blue' }}
                 />
               </div>
               <div>
