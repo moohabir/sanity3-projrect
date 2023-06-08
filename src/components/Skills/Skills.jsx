@@ -40,8 +40,9 @@ function Skills() {
     <ThemeProvider theme={theme}>
       <Container
         style={{
-          marginBottom: '40px',
+          marginBottom: '80px',
           //backgroundColor: '#fff'
+          paddingBottom: '50px',
         }}
       >
         <Typography
